@@ -40,8 +40,8 @@ class _SignInState extends State<SignInScreen> {
                 ),
                 keyboardType: TextInputType.emailAddress,
                 autocorrect: false,
-                // validator: con.validatorEmail,
-                // onSaved: con.onSavedEmail,
+                validator: con.validatorEmail,
+                onSaved: con.onSavedEmail,
               ),
               TextFormField(
                 decoration: InputDecoration(
@@ -49,16 +49,16 @@ class _SignInState extends State<SignInScreen> {
                 ),
                 obscureText: true,
                 autocorrect: false,
-                // validator: con.validatorPassword,
-                // onSaved: con.onSavedPassword,
+                validator: con.validatorPassword,
+                onSaved: con.onSavedPassword,
               ),
               RaisedButton(
                 child: Text('Sign In',
                     style: TextStyle(
                       fontSize: 20.0,
-                      color: Colors.white,
+                      color: Colors.black,
                     )),
-                color: Colors.blue,
+                color: Colors.deepOrange,
                 onPressed: con.signIn,
               ),
             ],
@@ -101,4 +101,29 @@ class _Controller {
     }
     Navigator.pushReplacementNamed(_state.context, HomeScreen.routeName);
   }
+
+    String validatorEmail(String value) {
+    if (value == null || !value.contains('@') || !value.contains('.')) {
+      return 'Invalid email address';
+    } else {
+      return null;
+    }
+  }
+
+  void onSavedEmail(String value) {
+    email = value;
+  }
+
+  String validatorPassword(String value) {
+    if (value == null || value.length < 6) {
+      return 'Password min 6 chars';
+    } else {
+      return null;
+    }
+  }
+
+  void onSavedPassword(String value) {
+    password = value;
+  }
+
 }

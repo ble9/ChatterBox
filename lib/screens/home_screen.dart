@@ -1,3 +1,5 @@
+import 'package:CreativeWork2/controller/firebasecontroller.dart';
+import 'package:CreativeWork2/screens/siginin_screen.dart';
 import 'package:CreativeWork2/widgets/category_selector.dart';
 import 'package:CreativeWork2/widgets/favorite_contacts.dart';
 import 'package:CreativeWork2/widgets/recent_chats.dart';
@@ -12,17 +14,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+   _Controller con;
+
+   @override
+  void initState() {
+    super.initState();
+    con = _Controller(this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          iconSize: 30.0,
-          color: Colors.white,
-          onPressed: () {},
-        ),
         title: Text(
           'Chats',
           style: TextStyle(
@@ -39,6 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {},
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text('Sign Out'),
+              onTap: con.signOut,
+            ),
+          ],
+        )
       ),
       body: Column(
         children: <Widget>[
@@ -64,4 +79,20 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+
+class _Controller {
+  _HomeScreenState _state;
+  _Controller(this._state);
+
+  void signOut() async {
+    try {
+      await FirebaseController.signOut();
+    } catch (e) {
+      print('signout exception:  ${e.message}');
+    }
+    Navigator.pushReplacementNamed(_state.context, SignInScreen.routeName);
+  }
+
+
 }
