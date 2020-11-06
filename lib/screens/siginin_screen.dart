@@ -1,4 +1,5 @@
 import 'package:CreativeWork2/controller/firebasecontroller.dart';
+import 'package:CreativeWork2/screens/views/mydialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -84,6 +85,7 @@ class _Controller {
     }
 
     _state.formKey.currentState.save();
+    MyDialog.circularProgressStart(_state.context);
 
     User user;
     
@@ -91,12 +93,12 @@ class _Controller {
       user = await FirebaseController.signIn(email, password);
       print('USER: $user');
     } catch (e) {
-      // MyDialog.circularProgressEnd(_state.context);
-      // MyDialog.info(
-      //   context: _state.context,
-      //   title: 'Sign In Error',
-      //   content: e.message ?? e.toString(),
-      // );
+      MyDialog.circularProgressEnd(_state.context);
+      MyDialog.info(
+        context: _state.context,
+        title: 'Sign In Error',
+        content: e.message ?? e.toString(),
+      );
       return;
     }
     Navigator.pushReplacementNamed(_state.context, HomeScreen.routeName);
