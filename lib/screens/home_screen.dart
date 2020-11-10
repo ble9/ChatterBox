@@ -3,6 +3,7 @@ import 'package:CreativeWork2/screens/siginin_screen.dart';
 import 'package:CreativeWork2/widgets/category_selector.dart';
 import 'package:CreativeWork2/widgets/favorite_contacts.dart';
 import 'package:CreativeWork2/widgets/recent_chats.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
@@ -15,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
    _Controller con;
+   User user;
 
    @override
   void initState() {
@@ -24,6 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Map arg = ModalRoute.of(context).settings.arguments;
+    user ??= arg['user'];
+    
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
@@ -47,6 +52,15 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
+            UserAccountsDrawerHeader(
+                // currentAccountPicture: ClipOval(
+                //     child: MyImageView.network(
+                //   imageUrl: user.photoURL,
+                //   context: context,
+                // )),
+                accountEmail: Text(user.email),
+                accountName: Text(user.displayName ?? 'N/A'),
+              ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Sign Out'),

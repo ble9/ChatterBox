@@ -110,7 +110,8 @@ class _Controller {
       );
       return;
     }
-    Navigator.pushReplacementNamed(_state.context, HomeScreen.routeName);
+    Navigator.pushReplacementNamed(_state.context, HomeScreen.routeName,
+    arguments: {'user': user});
   }
 
   String validatorEmail(String value) {
