@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     Map arg = ModalRoute.of(context).settings.arguments;
     user ??= arg['user'];
-    
+
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
@@ -60,6 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 // )),
                 accountEmail: Text(user.email),
                 accountName: Text(user.displayName ?? 'N/A'),
+              ),
+               ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Change Password'),
+                onTap: con.resetPassword,
               ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
@@ -106,6 +111,14 @@ class _Controller {
       print('signout exception:  ${e.message}');
     }
     Navigator.pushReplacementNamed(_state.context, SignInScreen.routeName);
+  }
+
+  void resetPassword() async {
+    try {
+      await FirebaseController.resetPassword(_state.user.email);
+    } catch (e) {
+      print(e.message);
+    }
   }
 
 
