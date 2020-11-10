@@ -1,5 +1,6 @@
 import 'package:CreativeWork2/screens/home_screen.dart';
 import 'package:CreativeWork2/screens/siginin_screen.dart';
+import 'package:CreativeWork2/screens/signup_screen.dart';
 import 'package:CreativeWork2/screens/youtube.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         SignInScreen.routeName: (context) => SignInScreen(),
         HomeScreen.routeName: (context) => HomeScreen(),
         Youtube.routeName: (context) => Youtube(),
-        
+        SignUpScreen.routeName: (context) => SignUpScreen(),
       },
     );
   }

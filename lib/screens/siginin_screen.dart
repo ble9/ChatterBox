@@ -1,4 +1,5 @@
 import 'package:CreativeWork2/controller/firebasecontroller.dart';
+import 'package:CreativeWork2/screens/signup_screen.dart';
 import 'package:CreativeWork2/screens/views/mydialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +63,14 @@ class _SignInState extends State<SignInScreen> {
                 color: Colors.deepOrange,
                 onPressed: con.signIn,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              FlatButton(
+                onPressed: con.signUp,
+                child: Text('NO acount click here to create',
+                    style: TextStyle(fontSize: 15.0)),
+              ),
             ],
           ),
         ),
@@ -88,7 +97,7 @@ class _Controller {
     MyDialog.circularProgressStart(_state.context);
 
     User user;
-    
+
     try {
       user = await FirebaseController.signIn(email, password);
       print('USER: $user');
@@ -104,7 +113,7 @@ class _Controller {
     Navigator.pushReplacementNamed(_state.context, HomeScreen.routeName);
   }
 
-    String validatorEmail(String value) {
+  String validatorEmail(String value) {
     if (value == null || !value.contains('@') || !value.contains('.')) {
       return 'Invalid email address';
     } else {
@@ -128,4 +137,7 @@ class _Controller {
     password = value;
   }
 
+  void signUp() async {
+    Navigator.pushNamed(_state.context, SignUpScreen.routeName);
+  }
 }
