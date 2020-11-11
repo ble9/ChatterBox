@@ -59,7 +59,7 @@ class _SignUpState extends State<SignUpScreen> {
                   'Create',
                   style: TextStyle(fontSize: 20.0, color: Colors.black),
                 ),
-                color: Colors.deepOrange,
+                color: Color.fromRGBO(143, 148, 251, 1),
                 onPressed: con.signUp,
               ),
             ],

@@ -170,11 +170,11 @@ class _SignInState extends State<SignInScreen> {
                       ),
                       FlatButton(
                         onPressed: con.signUp,
-                        child: Text('NO acount click here to create',
-                            style: TextStyle(fontSize: 15.0)),
+                        child: Text('No Account click here to create',
+                            style: TextStyle(fontSize: 15.0 , color: Color.fromRGBO(143, 148, 251, 1))),
                       ),
-                      FlatButton(
-                          child: FadeAnimation(1.5, Text("Forgot Password?", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),))),
+//                      FlatButton(
+//                          child: FadeAnimation(1.5, Text("Forgot Password?", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),))),
                       ],
                   ),
                 )

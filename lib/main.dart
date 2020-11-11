@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
         initialRoute: SignInScreen.routeName,
       theme: ThemeData(
-        primaryColor: Colors.purple,
-        accentColor: Colors.yellowAccent,
+        primaryColor: Color.fromRGBO(143, 148, 251, 1),
+        accentColor: Colors.grey,
       ),
     
       routes: {
