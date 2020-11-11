@@ -1,5 +1,7 @@
+
 import 'package:ChatterBox/Animation/FadeAnimation.dart';
 import 'package:ChatterBox/controller/firebasecontroller.dart';
+import 'package:ChatterBox/screens/signup_screen.dart';
 import 'package:ChatterBox/screens/views/mydialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -167,6 +169,11 @@ class _SignInState extends State<SignInScreen> {
                       Center(child: SizedBox(height: 70,)
                       ),
                       FlatButton(
+                        onPressed: con.signUp,
+                        child: Text('NO acount click here to create',
+                            style: TextStyle(fontSize: 15.0)),
+                      ),
+                      FlatButton(
                           child: FadeAnimation(1.5, Text("Forgot Password?", style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),))),
                       ],
                   ),
@@ -211,10 +218,11 @@ class _Controller {
       );
       return;
     }
-    Navigator.pushReplacementNamed(_state.context, HomeScreen.routeName);
+    Navigator.pushReplacementNamed(_state.context, HomeScreen.routeName,
+    arguments: {'user': user});
   }
 
-    String validatorEmail(String value) {
+  String validatorEmail(String value) {
     if (value == null || !value.contains('@') || !value.contains('.')) {
       return 'Invalid email address';
     } else {
@@ -237,4 +245,9 @@ class _Controller {
   void onSavedPassword(String value) {
     password = value;
   }
+
+  void signUp() async {
+    Navigator.pushNamed(_state.context, SignUpScreen.routeName);
+  }
+
 }

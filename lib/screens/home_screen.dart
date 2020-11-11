@@ -1,8 +1,10 @@
+
 import 'package:ChatterBox/controller/firebasecontroller.dart';
 import 'package:ChatterBox/screens/siginin_screen.dart';
 import 'package:ChatterBox/widgets/category_selector.dart';
 import 'package:ChatterBox/widgets/favorite_contacts.dart';
 import 'package:ChatterBox/widgets/recent_chats.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
@@ -15,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
    _Controller con;
+   User user;
 
    @override
   void initState() {
@@ -24,6 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Map arg = ModalRoute.of(context).settings.arguments;
+    user ??= arg['user'];
+
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
@@ -47,6 +53,20 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
+            UserAccountsDrawerHeader(
+                // currentAccountPicture: ClipOval(
+                //     child: MyImageView.network(
+                //   imageUrl: user.photoURL,
+                //   context: context,
+                // )),
+                accountEmail: Text(user.email),
+                accountName: Text(user.displayName ?? 'N/A'),
+              ),
+               ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Change Password'),
+                onTap: con.resetPassword,
+              ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Sign Out'),
@@ -92,6 +112,14 @@ class _Controller {
       print('signout exception:  ${e.message}');
     }
     Navigator.pushReplacementNamed(_state.context, SignInScreen.routeName);
+  }
+
+  void resetPassword() async {
+    try {
+      await FirebaseController.resetPassword(_state.user.email);
+    } catch (e) {
+      print(e.message);
+    }
   }
 
 

@@ -1,5 +1,7 @@
+
 import 'package:ChatterBox/screens/home_screen.dart';
 import 'package:ChatterBox/screens/siginin_screen.dart';
+import 'package:ChatterBox/screens/signup_screen.dart';
 import 'package:ChatterBox/screens/youtube.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
         SignInScreen.routeName: (context) => SignInScreen(),
         HomeScreen.routeName: (context) => HomeScreen(),
         Youtube.routeName: (context) => Youtube(),
-        
+        SignUpScreen.routeName: (context) => SignUpScreen(),
       },
     );
   }
