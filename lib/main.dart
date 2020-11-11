@@ -1,6 +1,6 @@
-import 'package:CreativeWork2/screens/home_screen.dart';
-import 'package:CreativeWork2/screens/siginin_screen.dart';
-import 'package:CreativeWork2/screens/youtube.dart';
+import 'package:ChatterBox/screens/home_screen.dart';
+import 'package:ChatterBox/screens/siginin_screen.dart';
+import 'package:ChatterBox/screens/youtube.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
         initialRoute: SignInScreen.routeName,
       theme: ThemeData(
-        primaryColor: Colors.black,
-        accentColor: Colors.deepOrange,
+        primaryColor: Colors.purple,
+        accentColor: Colors.yellowAccent,
       ),
     
       routes: {

@@ -1,5 +1,5 @@
 
-import 'package:CreativeWork2/model/video_model.dart';
+import 'package:ChatterBox/model/video_model.dart';
 
 class Channel {
 

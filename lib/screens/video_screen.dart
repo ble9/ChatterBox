@@ -30,13 +30,26 @@ class _VideoScreenState extends State<VideoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: YoutubePlayer(
-        controller: _controller,
-        showVideoProgressIndicator: true,
-        onReady: () {
-          print('Player is ready.');
-        },
+      appBar: AppBar(
+        title: Text(
+          'Now Playing',
+          style: TextStyle(
+            fontFamily: 'Sans-serif',
+            fontSize: 22,
+          ),
+        ),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: YoutubePlayer(
+            controller: _controller,
+            showVideoProgressIndicator: true,
+            onReady: () {
+              print('Player is Ready.');
+            },
+          ),
+        ),
       ),
     );
   }

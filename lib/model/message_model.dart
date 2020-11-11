@@ -1,4 +1,4 @@
-import 'package:CreativeWork2/model/user_model.dart';
+import 'package:ChatterBox/model/user_model.dart';
 
 class Message {
    User sender;

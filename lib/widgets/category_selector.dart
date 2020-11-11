@@ -1,4 +1,4 @@
-import 'package:CreativeWork2/screens/youtube.dart';
+import 'package:ChatterBox/screens/youtube.dart';
 import 'package:flutter/material.dart';
 
 class CategorySelector extends StatefulWidget {

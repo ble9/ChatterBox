@@ -1,7 +1,7 @@
-import 'package:CreativeWork2/model/channel_model.dart';
-import 'package:CreativeWork2/model/video_model.dart';
-import 'package:CreativeWork2/screens/video_screen.dart';
-import 'package:CreativeWork2/services/api_service.dart';
+import 'package:ChatterBox/model/channel_model.dart';
+import 'package:ChatterBox/model/video_model.dart';
+import 'package:ChatterBox/screens/video_screen.dart';
+import 'package:ChatterBox/services/api_service.dart';
 import 'package:flutter/material.dart';
 
 
@@ -23,7 +23,7 @@ class _YoutubeState extends State<Youtube> {
 
   _initChannel() async {
     Channel channel = await APIService.instance
-        .fetchChannel(channelId: 'UCg4JKD5U5QW6SUfi2FpI53A');
+        .fetchChannel(channelId: 'UCJEksfwEDOP56cRhVFB6goQ');
     setState(() {
       _channel = channel;
     });
@@ -142,7 +142,39 @@ class _YoutubeState extends State<Youtube> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('YouTube Channel'),
+        centerTitle: true,
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: IconButton(
+            icon: Icon(
+              Icons.account_circle,
+              size: 35,
+              color: Colors.white,
+            ),
+            onPressed: null,
+          ),
+        ),
+        title: Text(
+          'Youtube Channel',
+          style: TextStyle(
+            fontFamily: 'Sans-serif',
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.search,
+                size: 35,
+                color: Colors.white,
+              ),
+              onPressed: null,
+            ),
+          ),
+        ],
       ),
       body: _channel != null
           ? NotificationListener<ScrollNotification>(

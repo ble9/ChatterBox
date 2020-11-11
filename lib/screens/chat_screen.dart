@@ -1,5 +1,5 @@
-import 'package:CreativeWork2/model/message_model.dart';
-import 'package:CreativeWork2/model/user_model.dart';
+import 'package:ChatterBox/model/message_model.dart';
+import 'package:ChatterBox/model/user_model.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {

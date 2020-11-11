@@ -1,8 +1,8 @@
-import 'package:CreativeWork2/controller/firebasecontroller.dart';
-import 'package:CreativeWork2/screens/siginin_screen.dart';
-import 'package:CreativeWork2/widgets/category_selector.dart';
-import 'package:CreativeWork2/widgets/favorite_contacts.dart';
-import 'package:CreativeWork2/widgets/recent_chats.dart';
+import 'package:ChatterBox/controller/firebasecontroller.dart';
+import 'package:ChatterBox/screens/siginin_screen.dart';
+import 'package:ChatterBox/widgets/category_selector.dart';
+import 'package:ChatterBox/widgets/favorite_contacts.dart';
+import 'package:ChatterBox/widgets/recent_chats.dart';
 import 'package:flutter/material.dart';
 
 

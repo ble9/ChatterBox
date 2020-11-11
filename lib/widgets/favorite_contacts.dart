@@ -1,5 +1,5 @@
-import 'package:CreativeWork2/model/message_model.dart';
-import 'package:CreativeWork2/screens/chat_screen.dart';
+import 'package:ChatterBox/model/message_model.dart';
+import 'package:ChatterBox/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteContacts extends StatelessWidget {

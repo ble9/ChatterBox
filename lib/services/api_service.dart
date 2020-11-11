@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:CreativeWork2/model/channel_model.dart';
-import 'package:CreativeWork2/model/video_model.dart';
+import 'package:ChatterBox/model/channel_model.dart';
+import 'package:ChatterBox/model/video_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:CreativeWork2/utilities/keys.dart';
+import 'package:ChatterBox/utilities/keys.dart';
 
 class APIService {
   APIService._instantiate();
