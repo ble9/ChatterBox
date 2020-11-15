@@ -45,9 +45,9 @@ class FavoriteContacts extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => ChatScreen(
-                        user: favorites[index],
-                      ),
+//                      builder: (_) => ChatScreen(
+//                        user: favorites[index],
+//                      ),
                     ),
                   ),
                   child: Padding(

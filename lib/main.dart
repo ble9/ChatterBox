@@ -1,4 +1,6 @@
 
+import 'package:ChatterBox/screens/chat_screen.dart';
+import 'package:ChatterBox/screens/groups_screen.dart';
 import 'package:ChatterBox/screens/home_screen.dart';
 import 'package:ChatterBox/screens/siginin_screen.dart';
 import 'package:ChatterBox/screens/signup_screen.dart';
@@ -25,12 +27,13 @@ class MyApp extends StatelessWidget {
         primaryColor: Color.fromRGBO(143, 148, 251, 1),
         accentColor: Colors.grey,
       ),
-    
-      routes: {
+     routes: {
         SignInScreen.routeName: (context) => SignInScreen(),
         HomeScreen.routeName: (context) => HomeScreen(),
         Youtube.routeName: (context) => Youtube(),
         SignUpScreen.routeName: (context) => SignUpScreen(),
+        GroupsScreen.routeName:(context) => GroupsScreen(),
+//        ChatScreen.routeName: (context) => ChatScreen(),
       },
     );
   }
