@@ -6,6 +6,7 @@ import 'package:ChatterBox/widgets/favorite_contacts.dart';
 import 'package:ChatterBox/widgets/recent_chats.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 
 
@@ -67,6 +68,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Text('Change Password'),
                 onTap: con.resetPassword,
               ),
+              ListTile(
+                leading: Icon(Icons.exit_to_app),
+                title: Text('Sign Out With Google'),
+                onTap: con.signOutGoogle,
+              ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Sign Out'),
@@ -90,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 children: <Widget>[
                   FavoriteContacts(),
-                  RecentChats(),
+//                  RecentChats(),
                 ],
               ),
             ),
@@ -104,6 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
 class _Controller {
   _HomeScreenState _state;
   _Controller(this._state);
+   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   void signOut() async {
     try {
@@ -121,6 +128,13 @@ class _Controller {
       print(e.message);
     }
   }
+
+   void signOutGoogle() async {
+    await googleSignIn.signOut();
+    Navigator.pushReplacementNamed(_state.context, SignInScreen.routeName);
+    print("User Signed Out");
+  }
+
 
 
 }
