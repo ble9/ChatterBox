@@ -1,5 +1,6 @@
 
 import 'package:ChatterBox/controller/firebasecontroller.dart';
+import 'package:ChatterBox/screens/search.dart';
 import 'package:ChatterBox/screens/siginin_screen.dart';
 import 'package:ChatterBox/widgets/category_selector.dart';
 import 'package:ChatterBox/widgets/favorite_contacts.dart';
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.search),
             iconSize: 30.0,
             color: Colors.white,
-            onPressed: () {},
+            onPressed: con.search,
           ),
         ],
       ),
@@ -111,6 +112,10 @@ class _Controller {
   _HomeScreenState _state;
   _Controller(this._state);
    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+  void search() {
+    Navigator.pushNamed(_state.context, SearchScreen.routeName);
+  }
 
   void signOut() async {
     try {

@@ -1,5 +1,6 @@
 
 import 'package:ChatterBox/screens/home_screen.dart';
+import 'package:ChatterBox/screens/search.dart';
 import 'package:ChatterBox/screens/siginin_screen.dart';
 import 'package:ChatterBox/screens/signup_screen.dart';
 import 'package:ChatterBox/screens/youtube.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (context) => HomeScreen(),
         Youtube.routeName: (context) => Youtube(),
         SignUpScreen.routeName: (context) => SignUpScreen(),
+        SearchScreen.routeName: (context) => SearchScreen(),
       },
     );
   }
