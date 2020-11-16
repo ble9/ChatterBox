@@ -29,9 +29,9 @@ class FirebaseController {
     print("============email sent");
   }
 
-  getUserByUsername(String email) async {
+  getUserByUsername(String name) async {
     return await FirebaseFirestore.instance.collection('users')
-      .where("email", isEqualTo: email).get();
+      .where("username", isEqualTo: name).get();
   }
 
   uploadUserInfo(userMap) {
