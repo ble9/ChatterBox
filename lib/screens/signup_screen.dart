@@ -2,6 +2,9 @@ import 'package:ChatterBox/controller/firebasecontroller.dart';
 import 'package:ChatterBox/screens/views/mydialog.dart';
 import 'package:flutter/material.dart';
 
+import '../controller/firebasecontroller.dart';
+import '../controller/firebasecontroller.dart';
+
 class SignUpScreen extends StatefulWidget {
   static const routeName = '/signInScreen/signUpScreen';
 
@@ -75,6 +78,7 @@ class _Controller {
   _Controller(this._state);
   String email;
   String password;
+  FirebaseController fbcon = new FirebaseController();
 
  void signUp() async {
     if (!_state.formKey.currentState.validate()) return;
@@ -83,6 +87,12 @@ class _Controller {
 
     try {
       await FirebaseController.signUp(email, password);
+
+      Map<String, String> userInfoMap = {
+        "email": email,
+      };
+
+      fbcon.uploadUserInfo(userInfoMap);
       MyDialog.info(
         context: _state.context,
         title: 'Success',

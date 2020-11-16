@@ -15,6 +15,8 @@ class _SearchScreenState extends State<SearchScreen> {
     con = _Controller(this);
   }
 
+  TextEditingController searchTextEditingController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +30,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
+                      controller: searchTextEditingController,
                       decoration: InputDecoration(
                         hintText: "username",
                         // border: InputBorder.none

@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
@@ -26,5 +27,14 @@ class FirebaseController {
   static Future<void> resetPassword(String email) async {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
     print("============email sent");
+  }
+
+  getUserByUsername(String username) {
+
+  }
+
+  uploadUserInfo(userMap) {
+    FirebaseFirestore.instance.collection('users')
+      .add(userMap);
   }
 }
