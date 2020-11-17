@@ -2,6 +2,7 @@
 import 'package:ChatterBox/controller/firebasecontroller.dart';
 import 'package:ChatterBox/screens/search.dart';
 import 'package:ChatterBox/screens/siginin_screen.dart';
+import 'package:ChatterBox/screens/views/myimageview.dart';
 import 'package:ChatterBox/widgets/category_selector.dart';
 import 'package:ChatterBox/widgets/favorite_contacts.dart';
 import 'package:ChatterBox/widgets/recent_chats.dart';
@@ -56,13 +57,18 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-                // currentAccountPicture: ClipOval(
-                //     child: MyImageView.network(
-                //   imageUrl: user.photoURL,
-                //   context: context,
-                // )),
+                currentAccountPicture: ClipOval(
+                    child: MyImageView.network(
+                  imageUrl: user.photoURL,
+                  context: context,
+                )),
                 accountEmail: Text(user.email),
                 accountName: Text(user.displayName ?? 'N/A'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Change Password'),
+                onTap: con.resetPassword,
               ),
                ListTile(
                 leading: Icon(Icons.settings),

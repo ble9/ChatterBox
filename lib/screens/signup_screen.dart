@@ -41,6 +41,15 @@ class _SignUpState extends State<SignUpScreen> {
               ),
               TextFormField(
                 decoration: InputDecoration(
+                  hintText: 'Username',
+                ),
+               
+                autocorrect: false,
+                validator: con.validatorUsername,
+                onSaved: con.onSavedUsername,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
                   hintText: 'Email',
                 ),
                 keyboardType: TextInputType.emailAddress,
@@ -76,6 +85,7 @@ class _SignUpState extends State<SignUpScreen> {
 class _Controller {
   _SignUpState _state;
   _Controller(this._state);
+  String username;
   String email;
   String password;
   FirebaseController fbcon = new FirebaseController();
@@ -90,6 +100,7 @@ class _Controller {
 
       Map<String, String> userInfoMap = {
         "email": email,
+        "username" : username,
       };
 
       fbcon.uploadUserInfo(userInfoMap);
@@ -107,6 +118,17 @@ class _Controller {
     }
   }
   
+   String validatorUsername(String value) {
+    if (value.length < 6)
+      return 'minimum 6 chars';
+    else
+      return  null;
+  }
+
+  void onSavedUsername(String value) {
+    this.username = value;
+  }
+
   String validatorEmail(String value) {
     if (value.contains('@') && value.contains('.'))
       return null;
