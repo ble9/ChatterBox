@@ -26,9 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
    @override
   void initState() {
-    getUserInfo();
-    super.initState();
     
+    super.initState();
+    //getUserInfo(); //minor bug here that remembers old account
     con = _Controller(this);
   }
 
@@ -39,8 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
       print("getusername========== ${Constants.myName}");    
     });
 
-    //print("getusername========== ${Constants.myName}");    
-    
   }
 
   @override
@@ -82,8 +80,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ListTile(
                 leading: Icon(Icons.settings),
-                title: Text('userInfo'),
-                onTap: getUserInfo,
+                title: Text('userInfo'), 
+                onTap: getUserInfo, //this one works fine 
               ),
                ListTile(
                 leading: Icon(Icons.settings),
@@ -135,12 +133,14 @@ class _Controller {
    final GoogleSignIn googleSignIn = GoogleSignIn();
 
   void search() {
+    _state.getUserInfo(); //to get new user info (workaround)
     Navigator.pushNamed(_state.context, SearchScreen.routeName);
   }
 
   void signOut() async {
     try {
       await FirebaseController.signOut();
+
     } catch (e) {
       print('signout exception:  ${e.message}');
     }
