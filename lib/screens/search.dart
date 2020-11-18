@@ -138,7 +138,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           borderRadius: BorderRadius.circular(40),
                         ),
                         padding: EdgeInsets.all(8),
-                        child: Image.asset("assets/images/clock.png")),
+                        child:  Icon(Icons.search)),
                   ),
                 ],
               ),
