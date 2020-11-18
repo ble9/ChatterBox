@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
    @override
   void initState() {
-    //getUserInfo();
+    getUserInfo();
     super.initState();
     
     con = _Controller(this);
