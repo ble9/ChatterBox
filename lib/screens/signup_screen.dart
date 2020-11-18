@@ -1,4 +1,5 @@
 import 'package:ChatterBox/controller/firebasecontroller.dart';
+import 'package:ChatterBox/helper/helperfunctions.dart';
 import 'package:ChatterBox/screens/views/mydialog.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,6 @@ class _SignUpState extends State<SignUpScreen> {
                 decoration: InputDecoration(
                   hintText: 'Username',
                 ),
-               
                 autocorrect: false,
                 validator: con.validatorUsername,
                 onSaved: con.onSavedUsername,
@@ -89,8 +89,9 @@ class _Controller {
   String email;
   String password;
   FirebaseController fbcon = new FirebaseController();
+  HelperFunctions helperFunctions = new HelperFunctions();
 
- void signUp() async {
+  void signUp() async {
     if (!_state.formKey.currentState.validate()) return;
 
     _state.formKey.currentState.save();
@@ -100,29 +101,34 @@ class _Controller {
 
       Map<String, String> userInfoMap = {
         "email": email,
-        "username" : username,
+        "username": username,
       };
-
       fbcon.uploadUserInfo(userInfoMap);
+
+      HelperFunctions.saveUserEmailSharedPreference(email);
+      HelperFunctions.saveUserNameSharedPreference(username);
+
+      HelperFunctions.saveUserLoggedInSharedPreference(true);
+
       MyDialog.info(
         context: _state.context,
         title: 'Success',
         content: 'Account is created , Sign in',
       );
-    }catch(e){
+    } catch (e) {
       MyDialog.info(
-          context: _state.context,
-          title: 'Error',
-          content: e.message ?? e.toString(),
+        context: _state.context,
+        title: 'Error',
+        content: e.message ?? e.toString(),
       );
     }
   }
-  
-   String validatorUsername(String value) {
+
+  String validatorUsername(String value) {
     if (value.length < 6)
       return 'minimum 6 chars';
     else
-      return  null;
+      return null;
   }
 
   void onSavedUsername(String value) {

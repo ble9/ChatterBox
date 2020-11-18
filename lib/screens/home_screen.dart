@@ -1,5 +1,7 @@
 
 import 'package:ChatterBox/controller/firebasecontroller.dart';
+import 'package:ChatterBox/helper/constants.dart';
+import 'package:ChatterBox/helper/helperfunctions.dart';
 import 'package:ChatterBox/screens/search.dart';
 import 'package:ChatterBox/screens/siginin_screen.dart';
 import 'package:ChatterBox/screens/views/myimageview.dart';
@@ -24,8 +26,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
    @override
   void initState() {
+    //getUserInfo();
     super.initState();
+    
     con = _Controller(this);
+  }
+
+  getUserInfo() async{
+    Constants.myName =  await HelperFunctions.getUserNameSharedPreference();
+    
+    setState(() {  
+      print("getusername========== ${Constants.myName}");    
+    });
+
+    //print("getusername========== ${Constants.myName}");    
+    
   }
 
   @override
@@ -67,8 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ListTile(
                 leading: Icon(Icons.settings),
-                title: Text('Change Password'),
-                onTap: con.resetPassword,
+                title: Text('userInfo'),
+                onTap: getUserInfo,
               ),
                ListTile(
                 leading: Icon(Icons.settings),

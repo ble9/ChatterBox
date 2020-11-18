@@ -34,8 +34,30 @@ class FirebaseController {
       .where("username", isEqualTo: name).get();
   }
 
+  getUserByUserEmail(String email) async {
+    return await FirebaseFirestore.instance.collection('users')
+      .where("email", isEqualTo: email).get();
+  }
+
   uploadUserInfo(userMap) {
     FirebaseFirestore.instance.collection('users')
       .add(userMap);
+  }
+
+  createChatRoom(String chatRoomID, chatRoomMap) {
+    FirebaseFirestore.instance.collection('chatroom')
+      .doc(chatRoomID).set(chatRoomMap).catchError((e) {
+        print(e.toString());
+      });
+  }
+
+  getUserInfo(String email) async {
+    return FirebaseFirestore.instance
+        .collection("users")
+        .where("email", isEqualTo: email)
+        .get()
+        .catchError((e) {
+      print(e.toString());
+    });
   }
 }

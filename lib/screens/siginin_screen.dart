@@ -1,10 +1,16 @@
 import 'package:ChatterBox/Animation/FadeAnimation.dart';
 import 'package:ChatterBox/controller/firebasecontroller.dart';
+import 'package:ChatterBox/helper/constants.dart';
+import 'package:ChatterBox/helper/helperfunctions.dart';
 import 'package:ChatterBox/screens/signup_screen.dart';
 import 'package:ChatterBox/screens/views/mydialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../controller/firebasecontroller.dart';
+import '../controller/firebasecontroller.dart';
+import '../controller/firebasecontroller.dart';
 import 'home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -240,9 +246,6 @@ class _SignInState extends State<SignInScreen> {
   }
 }
 
-
-
-
 class _Controller {
   _SignInState _state;
 
@@ -253,8 +256,10 @@ class _Controller {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
+  FirebaseController fbcon = new FirebaseController();
+  QuerySnapshot snapshotUserInfo;
 
-Future<String> signInWithGoogle() async {
+  Future<String> signInWithGoogle() async {
     MyDialog.circularProgressStart(_state.context);
 
     await Firebase.initializeApp();
@@ -282,7 +287,7 @@ Future<String> signInWithGoogle() async {
       print('signInWithGoogle succeeded: $user');
 
       MyDialog.circularProgressEnd(_state.context);
-      
+
       //2. navigate to User Home screen to display photomemo
       Navigator.pushReplacementNamed(_state.context, HomeScreen.routeName,
           arguments: {'user': user});
@@ -294,7 +299,6 @@ Future<String> signInWithGoogle() async {
 
     return null;
   }
-
 
   void signIn() async {
     if (!_state.formKey.currentState.validate()) {
@@ -308,7 +312,17 @@ Future<String> signInWithGoogle() async {
 
     try {
       user = await FirebaseController.signIn(email, password);
-      print('USER: $user');
+      HelperFunctions.saveUserEmailSharedPreference(email);
+
+      fbcon.getUserByUserEmail(email)
+        .then((val) {
+          snapshotUserInfo = val;
+          HelperFunctions.saveUserNameSharedPreference(snapshotUserInfo.docs[0].data()["username"]);
+
+         
+        });
+
+     
     } catch (e) {
       MyDialog.circularProgressEnd(_state.context);
       MyDialog.info(
@@ -318,6 +332,8 @@ Future<String> signInWithGoogle() async {
       );
       return;
     }
+
+    HelperFunctions.saveUserLoggedInSharedPreference(true);
     Navigator.pushReplacementNamed(_state.context, HomeScreen.routeName,
         arguments: {'user': user});
   }
