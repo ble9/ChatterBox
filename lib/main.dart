@@ -1,3 +1,5 @@
+
+
 import 'package:ChatterBox/screens/convo_screen.dart';
 import 'package:ChatterBox/screens/home_screen.dart';
 import 'package:ChatterBox/screens/search.dart';
@@ -6,6 +8,7 @@ import 'package:ChatterBox/screens/signup_screen.dart';
 import 'package:ChatterBox/screens/youtube.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'screens/Speech..dart';
 
 
 void main() async {
@@ -34,6 +37,7 @@ class MyApp extends StatelessWidget {
         SignUpScreen.routeName: (context) => SignUpScreen(),
         SearchScreen.routeName: (context) => SearchScreen(),
         ConvoScreen.routeName: (context) => ConvoScreen(),
+        SpeechScreen.routeName: (context) => SpeechScreen(),
       },
     );
   }

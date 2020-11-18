@@ -2,6 +2,7 @@
 import 'package:ChatterBox/controller/firebasecontroller.dart';
 import 'package:ChatterBox/helper/constants.dart';
 import 'package:ChatterBox/helper/helperfunctions.dart';
+import 'package:ChatterBox/screens/Speech..dart';
 import 'package:ChatterBox/screens/search.dart';
 import 'package:ChatterBox/screens/siginin_screen.dart';
 import 'package:ChatterBox/screens/views/myimageview.dart';
@@ -84,6 +85,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: getUserInfo, //this one works fine 
               ),
                ListTile(
+                 leading: Icon(Icons.speaker),
+                 title:Text('Speech to text'),
+                 onTap: con.speech,
+               ),
+               ListTile(
                 leading: Icon(Icons.settings),
                 title: Text('Change Password'),
                 onTap: con.resetPassword,
@@ -131,6 +137,11 @@ class _Controller {
   _HomeScreenState _state;
   _Controller(this._state);
    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+
+   void speech() {
+    Navigator.pushNamed(_state.context, SpeechScreen.routeName);
+  }
 
   void search() {
     _state.getUserInfo(); //to get new user info (workaround)
