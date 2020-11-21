@@ -1,44 +1,42 @@
+import 'package:ChatterBox/screens/Netflix_screen.dart';
+import 'package:ChatterBox/screens/Speech..dart';
 import 'package:ChatterBox/screens/youtube.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
-class CategorySelector extends StatefulWidget {
-  @override
-  _CategorySelectorState createState() => _CategorySelectorState();
-}
-
-class _CategorySelectorState extends State<CategorySelector> {
-  int selectedIndex = 0;
-   List<String> categories = ['Youtube'];
-
+class CategorySelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90.0,
-      color: Theme.of(context).primaryColor,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-              });
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 20.0,
-                vertical: 30.0,
-              ),
-              child: IconButton(
-                icon: Icon(Icons.play_arrow,
-                    size: 30.0, color: Colors.white),
-                onPressed: () =>
-                    Navigator.pushNamed(context, Youtube.routeName),
-              ),
+      child: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+          Container(
+            height: 90,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.play_arrow,),
+                  iconSize: 40.0, color: Colors.black,
+                  onPressed: () => Navigator.pushNamed(context, NetflixScreen.routeName),
+                ),
+                IconButton(icon: Icon(Icons.music_video,),
+                  iconSize: 40.0,color: Colors.black,
+                  onPressed: () => Navigator.pushNamed(context, Youtube.routeName),
+                ),
+                IconButton(icon: Icon(Icons.mic,),
+                  iconSize: 40.0,color: Colors.black,
+                  onPressed: () => Navigator.pushNamed(context, SpeechScreen.routeName),
+                ),
+              ],
             ),
-          );
-        },
+          ),
+          ],
+        ),
       ),
+    ),
     );
   }
 }

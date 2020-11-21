@@ -188,6 +188,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  flutter_rating_bar:
+    dependency: "direct main"
+    description:
+      name: flutter_rating_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.0+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -386,7 +393,14 @@ packages:
       name: sa_anicoto
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.3"
+    version: "1.2.0"
+  sa_liquid:
+    dependency: transitive
+    description:
+      name: sa_liquid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   sa_multi_tween:
     dependency: transitive
     description:
@@ -400,7 +414,7 @@ packages:
       name: sa_stateless_animation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.3"
+    version: "1.1.0"
   sa_v1_migration:
     dependency: transitive
     description:
@@ -456,7 +470,7 @@ packages:
       name: simple_animations
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.3"
+    version: "2.3.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -574,6 +588,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.8"
+  video_player:
+    dependency: "direct main"
+    description:
+      name: video_player
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.10.12+5"
+  video_player_platform_interface:
+    dependency: transitive
+    description:
+      name: video_player_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.0"
+  video_player_web:
+    dependency: transitive
+    description:
+      name: video_player_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4+1"
   webview_media:
     dependency: transitive
     description:

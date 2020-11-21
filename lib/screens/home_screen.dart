@@ -13,6 +13,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import 'Netflix_screen.dart';
+
 
 
 class HomeScreen extends StatefulWidget {
@@ -85,11 +87,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: getUserInfo, //this one works fine 
               ),
                ListTile(
-                 leading: Icon(Icons.speaker),
-                 title:Text('Speech to text'),
-                 onTap: con.speech,
-               ),
-               ListTile(
                 leading: Icon(Icons.settings),
                 title: Text('Change Password'),
                 onTap: con.resetPassword,
@@ -138,7 +135,9 @@ class _Controller {
   _Controller(this._state);
    final GoogleSignIn googleSignIn = GoogleSignIn();
 
-
+  void Ms() {
+    Navigator.pushNamed(_state.context, NetflixScreen.routeName);
+  }
    void speech() {
     Navigator.pushNamed(_state.context, SpeechScreen.routeName);
   }
