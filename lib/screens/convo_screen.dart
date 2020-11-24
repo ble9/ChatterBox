@@ -21,12 +21,17 @@ class _ConvoScreenState extends State<ConvoScreen> {
     return StreamBuilder(
       stream: chatMessagesStream,
       builder: (context, snapshot) {
-        return snapshot.hasData ? ListView.builder(
-          itemCount: snapshot.data.documents.length,
-          itemBuilder: (context, index) {
-            return MessageTile(snapshot.data.documents[index].data()["message"]);
-          },
-        ) : Container();
+        return snapshot.hasData
+            ? ListView.builder(
+                itemCount: snapshot.data.documents.length,
+                itemBuilder: (context, index) {
+                  return MessageTile(
+                      snapshot.data.documents[index].data()["message"],
+                      snapshot.data.documents[index].data()["sentBy"] ==
+                          Constants.myName);
+                },
+              )
+            : Container();
       },
     );
   }
@@ -39,14 +44,14 @@ class _ConvoScreenState extends State<ConvoScreen> {
         "sentBy": Constants.myName,
         "time": DateTime.now().millisecondsSinceEpoch,
       };
-     fbcon.addConvoMessages(widget.chatRoomID, messageMap);
-     messageController.text = "";
+      fbcon.addConvoMessages(widget.chatRoomID, messageMap);
+      messageController.text = "";
     }
   }
 
   @override
   void initState() {
-   fbcon.getConvoMessages(widget.chatRoomID).then((value){
+    fbcon.getConvoMessages(widget.chatRoomID).then((value) {
       setState(() {
         chatMessagesStream = value;
       });
@@ -56,8 +61,6 @@ class _ConvoScreenState extends State<ConvoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
- 
     return Scaffold(
       appBar: AppBar(title: Text('chat')),
       body: Container(
@@ -111,15 +114,50 @@ class _Controller {
 }
 
 class MessageTile extends StatelessWidget {
-
   final String message;
-  MessageTile(this.message);
+  final bool isSentByMe;
+  MessageTile(this.message, this.isSentByMe);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(message),
+      padding: EdgeInsets.only(left: isSentByMe ? 0 : 24, right: isSentByMe ? 24 : 0),
+      margin: EdgeInsets.symmetric(vertical: 8),
+      width: MediaQuery.of(context).size.width,
+      alignment: isSentByMe ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: isSentByMe ? [
+              const Color(0xff007Ef4),
+              const Color(0xff2A75bC)
+            ] : 
+            [
+              const Color(0x36000000),
+              const Color(0x36000000)
+            ],
+          ),
+          borderRadius: isSentByMe ? 
+            BorderRadius.only(
+              topLeft: Radius.circular(23),
+              topRight: Radius.circular(23),
+              bottomLeft: Radius.circular(23),
+            ) :
+            BorderRadius.only(
+              topLeft: Radius.circular(23),
+              topRight: Radius.circular(23),
+              bottomRight: Radius.circular(23),
+            )
+        ),
+        child: Text(
+          message,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 19,
+          ),
+        ),
+      ),
     );
   }
-
 }
