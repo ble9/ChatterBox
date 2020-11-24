@@ -81,4 +81,11 @@ class FirebaseController {
       .orderBy("time", descending: false)
       .snapshots();
   }
+
+  getChatRooms(String userName) async {
+    return await FirebaseFirestore.instance
+      .collection('chatroom')
+      .where("users", arrayContains: userName)
+      .snapshots();
+  }
 }
