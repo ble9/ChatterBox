@@ -2,11 +2,11 @@ import 'package:ChatterBox/screens/Netflix_screen.dart';
 import 'package:ChatterBox/screens/Movie_screen.dart';
 import 'package:ChatterBox/screens/convo_screen.dart';
 import 'package:ChatterBox/screens/home_screen.dart';
+import 'package:ChatterBox/screens/music.dart';
 import 'package:ChatterBox/screens/search.dart';
 import 'package:ChatterBox/screens/siginin_screen.dart';
 import 'package:ChatterBox/screens/signup_screen.dart';
 import 'package:ChatterBox/screens/youtube.dart';
-import 'package:ChatterBox/widgets/screenshots.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'screens/Speech..dart';
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Chat Youtube",
+      title: "ChatterBox",
       debugShowCheckedModeBanner: false,
         initialRoute: SignInScreen.routeName,
       theme: ThemeData(
@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
         ConvoScreen.routeName: (context) => ConvoScreen(),
         SpeechScreen.routeName: (context) => SpeechScreen(),
         NetflixScreen.routeName: (context) => NetflixScreen(),
+        MusicPlayer.routeName:(context) => MusicPlayer(),
          VideoApp.route: (ctx) => VideoApp(),
       },
     );

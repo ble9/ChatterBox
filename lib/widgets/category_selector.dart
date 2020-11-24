@@ -1,5 +1,6 @@
 import 'package:ChatterBox/screens/Netflix_screen.dart';
 import 'package:ChatterBox/screens/Speech..dart';
+import 'package:ChatterBox/screens/music.dart';
 import 'package:ChatterBox/screens/youtube.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -17,6 +18,7 @@ class CategorySelector extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
+
                 IconButton(
                   icon: Icon(Icons.play_arrow,),
                   iconSize: 40.0, color: Colors.black,
@@ -29,6 +31,10 @@ class CategorySelector extends StatelessWidget {
                 IconButton(icon: Icon(Icons.mic,),
                   iconSize: 40.0,color: Colors.black,
                   onPressed: () => Navigator.pushNamed(context, SpeechScreen.routeName),
+                ),
+                 IconButton(icon: Icon(Icons.audiotrack,),
+                  iconSize: 40.0,color: Colors.black,
+                  onPressed: () => Navigator.pushNamed(context, MusicPlayer.routeName),
                 ),
               ],
             ),
