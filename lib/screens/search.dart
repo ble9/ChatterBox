@@ -46,7 +46,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   createChatRoomAndStartConvo(String username) async {
-    print("my name=========${Constants.myName}");
+    //print("my name=========${Constants.myName}");
 
     
     if (username != Constants.myName) {
@@ -59,7 +59,12 @@ class _SearchScreenState extends State<SearchScreen> {
       };
 
       fbcon.createChatRoom(chatRoomID, chatRoomMap);
-      Navigator.pushNamed(context, ConvoScreen.routeName);
+     // Navigator.pushNamed(context, ConvoScreen.routeName, arguments: {'chatroomID': chatRoomID});
+ // print(chatRoomID);
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) => ConvoScreen(
+        chatRoomID: chatRoomID,
+        )));
     } else {
       print("you cannot send message to yourself");
     }

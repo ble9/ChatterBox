@@ -1,6 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 
 class FirebaseController {
@@ -59,5 +60,25 @@ class FirebaseController {
         .catchError((e) {
       print(e.toString());
     });
+  }
+
+  addConvoMessages(String chatRoomID, messageMap) {
+    
+    return FirebaseFirestore.instance
+      .collection('chatroom')
+      .doc(chatRoomID)
+      .collection('chats')
+      .add(messageMap)
+      .catchError((e) {print(e.toString());});
+  } 
+
+  getConvoMessages(String chatRoomID) async {
+    
+    return await FirebaseFirestore.instance
+      .collection('chatroom')
+      .doc(chatRoomID)
+      .collection('chats')
+      .orderBy("time", descending: false)
+      .snapshots();
   }
 }

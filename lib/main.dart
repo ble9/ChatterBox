@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         Youtube.routeName: (context) => Youtube(),
         SignUpScreen.routeName: (context) => SignUpScreen(),
         SearchScreen.routeName: (context) => SearchScreen(),
-        ConvoScreen.routeName: (context) => ConvoScreen(),
+        //ConvoScreen.routeName: (context) => ConvoScreen(),
         SpeechScreen.routeName: (context) => SpeechScreen(),
         NetflixScreen.routeName: (context) => NetflixScreen(),
          VideoApp.route: (ctx) => VideoApp(),
