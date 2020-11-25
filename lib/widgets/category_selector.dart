@@ -8,6 +8,12 @@ class CategorySelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [
+        Color.fromRGBO(143, 148, 251, 1),
+    Color.fromRGBO(255, 204, 255, 1),
+
+    ]),),
       child: SingleChildScrollView(
         child: Container(
           child: Column(

@@ -75,7 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
           iconSize: 30.0,
           color: message.isLiked
               ? Theme.of(context).primaryColor
-              : Colors.blue,
+              : Colors.red,
           onPressed: () {},
         )
       ],
@@ -118,7 +118,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+//      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         title: Text(
           widget.user.name,

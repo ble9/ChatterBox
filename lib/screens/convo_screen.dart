@@ -62,14 +62,23 @@ class _ConvoScreenState extends State<ConvoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('chat')),
+      appBar: AppBar(title: Text('Chat')),
       body: Container(
+        decoration: BoxDecoration(
+          image: const DecorationImage(
+            image: AssetImage('assets/images/callie.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Stack(
           children: [
             ChatMessageList(),
             Container(
               alignment: Alignment.bottomCenter,
               child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white30,
+                ),  
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: Row(
                   children: <Widget>[
@@ -89,13 +98,13 @@ class _ConvoScreenState extends State<ConvoScreen> {
                           width: 40,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(colors: [
-                              const Color(0x36000000),
-                              const Color(0x36000000),
+                              Color.fromRGBO(255, 77, 255, 1),
+                              Color.fromRGBO(255, 204, 255, 1),
                             ]),
                             borderRadius: BorderRadius.circular(40),
                           ),
                           padding: EdgeInsets.all(8),
-                          child: Icon(Icons.search)),
+                          child: Icon(Icons.send)),
                     ),
                   ],
                 ),
@@ -130,11 +139,11 @@ class MessageTile extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: isSentByMe ? [
-              const Color(0xff007Ef4),
-              const Color(0xff2A75bC)
+              Color.fromRGBO(143, 148, 251, 1),
+              Color.fromRGBO(143, 148, 251, .6),
             ] : 
             [
-              const Color(0x36000000),
+              Color.fromRGBO(255, 194, 214, 1),
               const Color(0x36000000)
             ],
           ),

@@ -132,33 +132,36 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       )),
-      body: Container(
-        child: chatRoomList(),
-      ),
-//      Column(
-//         children: <Widget>[
-//           CategorySelector(),
-//           Expanded(
-//             child: Container(
-//               decoration: BoxDecoration(
-//                 color: Theme.of(context).accentColor,
-//                 borderRadius: BorderRadius.only(
-//                   topLeft: Radius.circular(30.0),
-//                   topRight: Radius.circular(30.0),
-//                 ),
-//               ),
-//               child: Column(
-//                 children: <Widget>[
-//                 FavoriteContacts(),
-//                   Container(child: chatRoomList()),
-// //                  RecentChats(),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-    );
+      body:
+      Column(
+         children: <Widget>[
+           CategorySelector(),
+           Expanded(
+             child: Container(
+               decoration: BoxDecoration(
+                 gradient: LinearGradient(colors: [
+                 Color.fromRGBO(143, 148, 251, 1),
+                   Color.fromRGBO(255, 204, 255, 1),
+
+                 ]),
+                 borderRadius: BorderRadius.only(
+                   topLeft: Radius.circular(30.0),
+                   topRight: Radius.circular(30.0),
+                 ),
+               ),
+               child: Column(
+                 children: <Widget>[
+                 FavoriteContacts(),
+                   Container(
+                       height: 200,
+                       child: chatRoomList()),
+                 ],
+               ),
+             ),
+           ),
+         ],
+       ),
+      );
   }
 }
 
@@ -228,12 +231,15 @@ class ChatRoomsTile extends StatelessWidget {
               width: 40,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: Colors.purple[200],
-                  borderRadius: BorderRadius.circular(40)),
+                  gradient: LinearGradient(colors: [
+                    Color.fromRGBO(255, 77, 255, 1),
+                    Color.fromRGBO(255, 204, 255, 1),
+                  ]),
+                  borderRadius: BorderRadius.circular(100)),
               child: Text("${userName.substring(0, 1)}"),
             ),
             SizedBox(
-              width: 8,
+              width: 20,
             ),
             Text(userName),
           ],
